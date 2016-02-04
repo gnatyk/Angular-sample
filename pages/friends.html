@@ -1,0 +1,37 @@
+
+<div class=" ui grid container  card">
+    <div class="header-container">
+        <div class="page-header">
+            <h1>Search friends</h1>
+        </div>
+        <div class="body-container">
+            <form ng-submit="addPost()" class="ui form">
+                <div class="field">
+                    <br>
+                    <label Name</label>
+                        <div class="ui action input">
+                            <input ng-model="name" type="text" placeholder="Name...">
+                            <button class="ui icon button">
+                                <i class="search icon"></i>
+                            </button>
+                        </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="ui middle aligned divided list " ng-repeat="post in posts | orderBy: 'upvotes'">
+        <span class="glyphicon glyphicon-thumbs-up" ng-click="incrementUpvotes(post)"></span>
+        <div class="item">
+            <div class="right floated content">
+                <div class="ui button">Add</div>
+            </div>
+            <img class="ui avatar image" src="image/lena.png">
+            <div class="content">
+                {{post.name}} {{post.surName}}
+            </div>
+        </div>
+    </div>
+
+</div>
+ 

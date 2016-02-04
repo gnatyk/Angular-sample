@@ -1,42 +1,81 @@
-var app = angular.module('flapperNews',[]);
+var app = angular.module('newsApp', ['ui.router']);
 
-app.factory('posts',[ function(){
+app.factory('posts', [function () {
     var o = {
-        posts:[]
-        
-    }; 
-    return o;
-    
-}]),
+        posts: []
 
-app.controller('MainCtrl', [
+    };
+    return o;
+
+}]),
+app.config([
+    '$stateProvider',
+    '$urlRouterProvider',
+    function ($stateProvider, $urlRouterProvider) {
+        $stateProvider
+            .state('home', {
+                url: '/',
+                templateUrl: 'pages/home.html',
+                controller: 'MainCtrl'
+            })
+            .state('friends', {
+                url: '/friends',
+                templateUrl: 'pages/friends.html',
+                controller: 'FriendsCtrl'
+            })
+            .state('profile', {
+                url: '/profile',
+                templateUrl: 'pages/profile.html',
+                controller: 'ProfileCtrl'
+            })
+            .state('messages', {
+                url: '/messages',
+                templateUrl: 'pages/messages.html',
+                controller: 'MessaggesCtrl'
+            });
+            
+        $urlRouterProvider.otherwise('/');
+    }
+])
+
+app.controller('ProfileCtrl' ,[
     '$scope',
     'posts',
     function($scope,posts){
-        $scope.posts = posts.posts;
         
-/*
-   function($scope) {
-       $scope.posts = [
-  {title: 'post 1', upvotes: 5},
-  {title: 'post 2', upvotes: 2},
-  {title: 'post 3', upvotes: 15},
-  {title: 'post 4', upvotes: 9},
-  {title: 'post 5', upvotes: 4}
-  ]*/
-   $scope.addPost = function(){
-       if(!$scope.name || $scope.name ===''){ return;}
-        $scope.posts.push({
-            name: $scope.name,
-            surName: $scope.surName,
-            upvotes: 0
+    }    
+])
+
+app.controller('MessagesCtrl',[
+    '$scope',
+    'posts',
+    function($scope,posts){}
+    
+])
+app.controller('MainCtrl', [
+    '$scope',
+    'posts',
+    function ($scope, posts) {
+    }]);
+
+app.controller('FriendsCtrl', [
+    '$scope',
+    'posts',
+    function ($scope, posts) {
+        $scope.posts = posts.posts;
+        $scope.addPost = function () {
+            if (!$scope.name || $scope.name === '') { return; }
+            $scope.posts.push({
+                name: $scope.name,
+                surName: $scope.surName,
+                upvotes: 0
             });
-        $scope.name ='';
-        $scope.surName = '';
-     },
-     $scope.incrementUpvotes = function(post) {
-         post.upvote +=1;
-     }
- 
+            $scope.name = '';
+            $scope.surName = '';
+        },
+        $scope.incrementUpvotes = function (post) {
+            post.upvote += 1;
+        }
+
     }]);
     
