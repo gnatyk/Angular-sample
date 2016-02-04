@@ -15,69 +15,69 @@
            <div class="active item">Link</div>
            <a class="item">Link</a>
             <div class="ui dropdown item" tabindex="0">
-                Dropdown
-            <i class="dropdown icon"></i>
-            <div class="menu" tabindex="-1">
-            <div class="item">Action</div>
-            <div class="item">Another Action</div>
-            <div class="item">Something else here</div>
-            <div class="divider"></div>
-            <div class="item">Separated Link</div>
-            <div class="divider"></div>
-            <div class="item">One more separated link</div>
-            </div>
+                    Dropdown
+                <i class="dropdown icon"></i>
+                <div class="menu" tabindex="-1">
+                    <div class="item">Action</div>
+                    <div class="item">Another Action</div>
+                    <div class="item">Something else here</div>
+                    <div class="divider"></div>
+                    <div class="item">Separated Link</div>
+                    <div class="divider"></div>
+                    <div class="item">One more separated link</div>
+                </div>
             </div>
             <div class="right menu">
                 <div class="item">
-                <div class="ui transparent inverted icon input">
-                    <i class="search icon"></i>
-                    <input type="text" placeholder="Search">
-                </div>
+                    <div class="ui transparent inverted icon input">
+                        <i class="search icon"></i>
+                        <input type="text" placeholder="Search">
+                    </div>
                 </div>
                 <a class="item">Link</a>
-            </div>
+           </div>
         </div>
         
         <div class=" ui grid container  card" >
             <div class="content">
-            <div class="header-container">
-                <div class="col-md-6 col-md-offset-3">            
-                <div class="page-header">
-                    <h1>Flapper News</h1>
+                <div class="header-container">
+                    <div class="col-md-6 col-md-offset-3">            
+                        <div class="page-header">
+                            <h1>Flapper News</h1>
+                        </div>
+                    </div>
+                    <div class="body-container">
+                        <form ng-submit="addPost()" class="ui form">
+                            <div class="field">
+                                <label>First Name</label>
+                                <input ng-model="name" type="text" name="first-name" placeholder="name">
+                            </div>
+                            <div class="field">
+                                <label>Last Name</label>
+                                <input ng-model="surName" type="text" name="last-name" placeholder="surName">
+                            </div>            
+                            <button class="ui button" type="submit">Submit</button>
+                        </form>
+                    </div>
                 </div>
             </div>
-            <div class="body-container">
-                <form ng-submit="addPost()" class="ui form">
-                    <div class="field">
-                        <label>First Name</label>
-                        <input ng-model="title" type="text" name="first-name" placeholder="title">
-                    </div>
-                    <div class="field">
-                        <label>Last Name</label>
-                        <input ng-model="link" type="text" name="last-name" placeholder="link">
-                    </div>            
-                    <button class="ui button" type="submit">Submit</button>
-                </form>
-            </div>
-            </div>
-            
-           
-       
-          
-          <div class="ui vertical menu" ng-repeat="post in posts | orderBy: 'upvotes'">
-              <span class ="glyphicon glyphicon-thumbs-up" 
-            ng-click="incrementUpvotes(post)"></span>
-            <a class="item" ng-show="post.link" href="{{post.link}}">
-                <h4 class="ui header">f</h4>
-                <p>{{post.title}}</p>
-                <span ng-hide="post.link">
-                    {{post.link}}
-                </span>
-            </a>  
-        </div>    
+        </div> 
+    
+ 
         
-      </div>
-    </div> 
+        <div class="ui middle aligned divided list card container" ng-repeat="post in posts | orderBy: 'upvotes'">
+            <span class ="glyphicon glyphicon-thumbs-up" ng-click="incrementUpvotes(post)"></span>
+            <div class="item" >
+                <div class="right floated content" >
+                    <div class="ui button">Add</div>
+                </div>
+                    <img class="ui avatar image" src="image/lena.png">
+                    <div class="content">
+                            {{post.name}} {{post.surName}}
+                    </div>                  
+            </div>
+        </div>
+       
   </body>
     
 </html>
