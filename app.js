@@ -32,25 +32,37 @@ app.config([
                 url: '/messages',
                 templateUrl: 'pages/messages.html',
                 controller: 'MessaggesCtrl'
+            })
+            .state('registrarion', {
+                url: '/registration',
+                templateUrl: 'pages/registration.html',
+                controller: 'RegistrationCtrl'
             });
-            
+
         $urlRouterProvider.otherwise('/');
     }
 ])
-
-app.controller('ProfileCtrl' ,[
+app.controller('RegistrationCtrl', [
     '$scope',
     'posts',
-    function($scope,posts){
-        
-    }    
+    function ($scope, posts) {
+
+    }
 ])
 
-app.controller('MessagesCtrl',[
+app.controller('ProfileCtrl', [
     '$scope',
     'posts',
-    function($scope,posts){}
-    
+    function ($scope, posts) {
+
+    }
+])
+
+app.controller('MessagesCtrl', [
+    '$scope',
+    'posts',
+    function ($scope, posts) { }
+
 ])
 app.controller('MainCtrl', [
     '$scope',
